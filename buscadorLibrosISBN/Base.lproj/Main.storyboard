@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -72,13 +73,13 @@
                                 <exclude reference="IbU-Ex-iDd"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ufu-L5-Wfj"/>
-                                <exclude reference="hb3-x1-AW0"/>
+                                <exclude reference="ONC-Cf-M5Y"/>
                                 <exclude reference="XIK-UE-mXP"/>
                                 <exclude reference="dkx-id-m2m"/>
                                 <exclude reference="z2o-ob-Xi5"/>
                                 <exclude reference="zVn-fO-4sS"/>
-                                <exclude reference="ONC-Cf-M5Y"/>
+                                <exclude reference="Ufu-L5-Wfj"/>
+                                <exclude reference="hb3-x1-AW0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -87,13 +88,13 @@
                                 <include reference="IbU-Ex-iDd"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Ufu-L5-Wfj"/>
-                                <include reference="hb3-x1-AW0"/>
+                                <include reference="ONC-Cf-M5Y"/>
                                 <include reference="XIK-UE-mXP"/>
                                 <include reference="dkx-id-m2m"/>
                                 <include reference="z2o-ob-Xi5"/>
                                 <include reference="zVn-fO-4sS"/>
-                                <include reference="ONC-Cf-M5Y"/>
+                                <include reference="Ufu-L5-Wfj"/>
+                                <include reference="hb3-x1-AW0"/>
                             </mask>
                         </variation>
                     </view>
@@ -180,6 +181,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bPf-eS-6ay"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W8l-I8-Bwa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número ISBN" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pCt-Hc-Qcd">

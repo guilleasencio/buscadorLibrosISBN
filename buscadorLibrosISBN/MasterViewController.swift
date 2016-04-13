@@ -12,8 +12,7 @@ import CoreData
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, buscadorISBNControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
-    var managedObjectContext: NSManagedObjectContext? = nil
-    
+    var contexto: NSManagedObjectContext? = nil
     
     var libros: Array<Libro> = Array<Libro>()
 
@@ -21,6 +20,31 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let libroEntidad = NSEntityDescription.entityForName("Libro", inManagedObjectContext: self.contexto!)
+        let peticion = libroEntidad?.managedObjectModel.fetchRequestTemplateForName("petLibros")
+        do{
+            let librosEntidades = try self.contexto?.executeFetchRequest(peticion!)
+            for libro in librosEntidades! {
+                let nombre  = libro.valueForKey("nombre") as! String
+                let autores = libro.valueForKey("autores") as! String
+                let codigoISBN = libro.valueForKey("isbn") as! String
+                var imagenPortada = UIImage()
+                
+                let imagenEntidad = libro.valueForKey("tiene") as! NSObject
+                if (imagenEntidad.valueForKey("contenido") != nil){
+                    imagenPortada = UIImage(data: imagenEntidad.valueForKey("contenido") as! NSData)!
+                }
+                
+  
+                self.libros.append(Libro(nombre: nombre, autores: autores, imagen: imagenPortada, isbn: codigoISBN))
+
+                
+            }
+        }catch{
+            abort()
+        }
         
     }
 
@@ -54,6 +78,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             
             let sigVista = segue.destinationViewController as! buscardorISBNController
             sigVista.libros = self.libros
+            sigVista.contexto = self.contexto
             sigVista.delegate = self
         }
     }

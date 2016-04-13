@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+        <userInfo/>
     </entity>
+    <entity name="Imagen" syncable="YES">
+        <attribute name="contenido" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="pertenece" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Libro" inverseName="tiene" inverseEntity="Libro" syncable="YES"/>
+    </entity>
+    <entity name="Libro" syncable="YES">
+        <attribute name="autores" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isbn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tiene" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Imagen" inverseName="pertenece" inverseEntity="Imagen" syncable="YES"/>
+    </entity>
+    <fetchRequest name="petIsbn" entity="Libro" predicateString="isbn == $isbn" fetchLimit="1"/>
+    <fetchRequest name="petLibros" entity="Libro"/>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Event" positionX="261" positionY="189" width="128" height="45"/>
+        <element name="Libro" positionX="261" positionY="198" width="128" height="105"/>
+        <element name="Imagen" positionX="270" positionY="207" width="128" height="75"/>
     </elements>
 </model>
