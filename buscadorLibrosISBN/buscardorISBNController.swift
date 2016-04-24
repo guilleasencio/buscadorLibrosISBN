@@ -62,10 +62,19 @@ class buscardorISBNController: UIViewController, UITextFieldDelegate{
                 
                 let libroResultado = libroPeticion![0]
                
-                let imagenEntidad = libroResultado.valueForKey("tiene") as! Set<NSObject>
-                let imagen = imagenEntidad.first
-                if imagen != nil {
-                    let imagenPortada = UIImage(data: imagen?.valueForKey("contenido") as! NSData)
+//                let imagenEntidad = libroResultado.valueForKey("tiene") as! Set<NSObject>
+//                let imagen = imagenEntidad.first
+//                if imagen != nil {
+//                    let imagenPortada = UIImage(data: imagen?.valueForKey("contenido") as! NSData)
+//                    self.portada.image = imagenPortada
+//                    self.portada.hidden = false
+//                }
+                
+                let imagenEntidad = libroResultado.valueForKey("tiene") as! NSObject
+                
+                if let imagen = imagenEntidad.valueForKey("contenido") {
+                
+                    let imagenPortada = UIImage(data: imagen as! NSData)
                     self.portada.image = imagenPortada
                     self.portada.hidden = false
                 }
